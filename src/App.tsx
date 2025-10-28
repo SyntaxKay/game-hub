@@ -1,5 +1,6 @@
 import { Box, Grid, Text } from "@radix-ui/themes";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         width="auto"
       >
         <Box>
-          <Text>nav</Text>
+          <NavBar />
         </Box>
         <Box display={{ initial: "none", sm: "block" }}>
           <Text>nav</Text>

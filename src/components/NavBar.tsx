@@ -1,11 +1,12 @@
-import { Flex } from "@radix-ui/themes"
+import { Flex } from "@radix-ui/themes";
+import Logo from "./Logo";
 
-const navBar = () => {
+const NavBar = () => {
   return (
-    <Flex direction="column">
-
+    <Flex direction="row" align={"center"} >
+      <Logo />
     </Flex>
-  )
-}
+  );
+};
 
-export default navBar
+export default NavBar;
