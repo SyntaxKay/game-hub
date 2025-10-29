@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 const NavBar = () => {
   return (
-    <Flex direction="row" align={"center"} >
+    <Flex direction="row" align={"center"} gap="3">
       <Logo />
     </Flex>
   );

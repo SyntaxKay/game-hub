@@ -8,7 +8,6 @@ const Logo = () => {
         asChild
         width="auto"
         height="auto"
-        p="2"
         display="block"
         as='span'
       >
