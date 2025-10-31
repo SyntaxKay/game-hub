@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-clients";
-import { Cancel } from "@radix-ui/themes/components/alert-dialog";
+import { CanceledError } from "axios";
+
+
 
 interface Game {
   id: number;
@@ -21,7 +23,7 @@ const useGames = () => {
       .get<GameListInterface>("/games", { signal: abortCtrl.signal })
       .then((res) => setGames(res.data.results))
       .catch((err) => {
-        if (err instanceof Cancel) return;
+        if (err instanceof CanceledError) return;
         setError(err.message);
       });
 
