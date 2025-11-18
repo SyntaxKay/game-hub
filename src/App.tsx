@@ -18,7 +18,7 @@ function App() {
       appearance={appearance}
     >
       <Grid
-        columns={{ initial: "1", sm: "2" }}
+        columns={{ initial: "1", sm: "300px 1fr" }}
         gap="3"
         rows="repeat(2, auto)"
         width="auto"
@@ -29,7 +29,10 @@ function App() {
           <ColorModeToggle onChange={setAppearance} initial={appearance} />
         </Flex>
 
-        <Box display={{ initial: "none", sm: "block" }} p={"3"}>
+        <Box
+          display={{ initial: "none", sm: "block" }}
+          p={"3"}
+        >
           <Text>aside</Text>
         </Box>
         <Box p={"3"}>

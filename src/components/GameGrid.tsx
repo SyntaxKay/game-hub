@@ -1,5 +1,6 @@
-import { Text } from "@radix-ui/themes";
+import { Grid, Text } from "@radix-ui/themes";
 import useGames from "../hooks/useGames";
+import GameCard from "./GameCard";
 
 const GameGrid = () => {
   const { games, error } = useGames();
@@ -7,11 +8,11 @@ const GameGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <ul>
+      <Grid columns={{initial: "1", xs:"2", md: "3", lg: "4"}} gap="5" width="auto">
         {games.map((game) => (
-          <li key={game.id}>{game.name}</li>
+          <GameCard key={game.id} game={game} />
         ))}
-      </ul>
+      </Grid>
     </>
   );
 };
