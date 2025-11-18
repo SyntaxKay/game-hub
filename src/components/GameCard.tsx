@@ -2,6 +2,7 @@ import { Card, Flex, Heading, Inset } from "@radix-ui/themes";
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import Metacritics from "./Metacritics";
+import getCroppedImageUrl from "../services/image-url";
 
 interface GameCardProps {
   game: Game;
@@ -12,7 +13,7 @@ const GameCard = ({ game }: GameCardProps) => {
     <Card>
       <Inset clip="padding-box" side="top" pb="current">
         <img
-          src={game.background_image}
+          src={getCroppedImageUrl(game.background_image)}
           alt={game.name}
           style={{
             display: "block",

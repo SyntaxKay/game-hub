@@ -34,7 +34,7 @@ const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
           if (!RenderIcon) return null;
           return (
             <RenderIcon
-              key={(p as any).id ?? p.slug}
+              key={(p).id ?? p.slug}
               title={p.name}
               size={18}
               style={{ marginRight: 8 }}
