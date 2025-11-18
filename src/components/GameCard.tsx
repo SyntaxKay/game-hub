@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, Inset } from "@radix-ui/themes";
+import { Card, Flex, Heading, Inset, Skeleton } from "@radix-ui/themes";
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import Metacritics from "./Metacritics";
@@ -24,9 +24,13 @@ const GameCard = ({ game }: GameCardProps) => {
           }}
         />
       </Inset>
-      <Heading as="h3">{game.name}</Heading>
-      <Flex justify="between" align="center"> 
-      <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
+      <Heading as="h3">
+        {game.name}
+      </Heading>
+      <Flex justify="between" align="center">
+        <PlatformIconList
+          platforms={game.parent_platforms.map((p) => p.platform)}
+        />
         <Metacritics metacritics={game.metacritic} />
       </Flex>
     </Card>
