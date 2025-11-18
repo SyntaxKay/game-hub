@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IconButton } from "@radix-ui/themes";
-import { SunIcon, MoonIcon } from "@radix-ui/react-icons";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 export function ColorModeToggle({
   onChange,
@@ -28,7 +28,7 @@ export function ColorModeToggle({
       onClick={() => setMode((m) => (m === "light" ? "dark" : "light"))}
       title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
     >
-      {mode === "light" ? <SunIcon height={20} width={20} /> : <MoonIcon height={20} width={20} />}
+      {mode === "light" ? <FaSun height={20} width={20} /> : <FaMoon height={20} width={20} />}
     </IconButton>
   );
 }
