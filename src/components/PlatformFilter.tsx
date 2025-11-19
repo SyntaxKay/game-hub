@@ -13,17 +13,18 @@ const PlatformFilter = ({ onSelectPlatform, selectedPlatform }: Props) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <Button variant="surface" size={"3"} radius="small">
+        <Button variant="surface" size={"3"} radius="small" color="cyan">
           {selectedPlatform?.name ? selectedPlatform.name : "Platforms"}
           <DropdownMenu.TriggerIcon />
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content size="2">
+      <DropdownMenu.Content size="2" color="cyan" variant="soft">
         {data.map((platform) => (
           <>
             <DropdownMenu.Item
               key={platform.id}
               onClick={() => onSelectPlatform(platform)}
+              color="cyan"
             >
               {platform.name}
             </DropdownMenu.Item>

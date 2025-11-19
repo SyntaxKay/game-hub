@@ -8,6 +8,7 @@ import GenreList from "./components/GenreList";
 import type { Genre } from "./hooks/useGenres";
 import PlatformFilter from "./components/PlatformFilter";
 import type { platform } from "./hooks/useGames";
+import SortSelector from "./components/SortSelector";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -45,12 +46,15 @@ function App() {
           />
         </Box>
         <Flex p={"3"} direction={"column"} align={"start"} gap="3">
-          <PlatformFilter
-            onSelectPlatform={(platform) =>
-              setGameQuery({ ...gameQuery, platform })
-            }
-            selectedPlatform={gameQuery?.platform}
-          />
+          <Box as="div" style={{ display: "flex", gap: "12px" }}>
+            <PlatformFilter
+              onSelectPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
+              selectedPlatform={gameQuery?.platform}
+            />
+            <SortSelector />
+          </Box>
           <GameGrid gameQuery={gameQuery} />
         </Flex>
       </Grid>
