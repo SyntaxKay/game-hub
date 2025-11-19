@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, Inset, Text } from "@radix-ui/themes";
+import { Card, Flex, Heading, Inset } from "@radix-ui/themes";
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import Metacritics from "./Metacritics";

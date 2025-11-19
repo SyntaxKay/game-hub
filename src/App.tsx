@@ -6,6 +6,7 @@ import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import type { Genre } from "./hooks/useGenres";
+import PlatformFilter from "./components/PlatformFilter";
 
 function App() {
   const [appearance, setAppearance] = useState<"light" | "dark">(
@@ -35,9 +36,10 @@ function App() {
         <Box display={{ initial: "none", sm: "block" }} p={"3"}>
           <GenreList selectedGenre={selectedGenre} onSelectedGenre={(genre) => setSelectedGenre(genre)}/>
         </Box>
-        <Box p={"3"}>
+        <Flex p={"3"} direction={"column"} align={"start"} gap="3">
+          <PlatformFilter />
           <GameGrid selectedGenre={selectedGenre} />
-        </Box>
+        </Flex>
       </Grid>
     </Theme>
   );
