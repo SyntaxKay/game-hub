@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, Inset, Skeleton } from "@radix-ui/themes";
+import { Card, Flex, Heading, Inset, Text } from "@radix-ui/themes";
 import type { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import Metacritics from "./Metacritics";
@@ -9,6 +9,7 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+  console.log("Rendering GameCard for game:", game);
   return (
     <Card>
       <Inset clip="padding-box" side="top" pb="current">
@@ -24,6 +25,7 @@ const GameCard = ({ game }: GameCardProps) => {
           }}
         />
       </Inset>
+      {/* <ul>{game.genres.map(g => <li>{g.name}</li>)}</ul> */}
       <Heading as="h3">
         {game.name}
       </Heading>
