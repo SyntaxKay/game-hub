@@ -1,16 +1,15 @@
 import { Grid, Text } from "@radix-ui/themes";
-import useGames, { type platforms } from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import type { Genre } from "../hooks/useGenres";
+import type { GameQuery } from "../App";
+import useGames from "../hooks/useGames";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: platforms | null;
+  gameQuery: GameQuery;
 }
 
-const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
-  const { data, error, isLoading } = useGames(selectedGenre, selectedPlatform);
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = data?.length || 20;
   return (
     <>

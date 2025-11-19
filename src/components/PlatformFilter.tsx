@@ -1,10 +1,10 @@
 import { Button, DropdownMenu } from "@radix-ui/themes";
-import type { platforms } from "../hooks/useGames";
+import type { platform } from "../hooks/useGames";
 import usePlatform from "../hooks/usePlatform";
 
 interface Props {
-  onSelectPlatform: (platform: platforms) => void;
-  selectedPlatform?: platforms | null;
+  onSelectPlatform: (platform: platform) => void;
+  selectedPlatform?: platform | null;
 }
 
 const PlatformFilter = ({ onSelectPlatform, selectedPlatform }: Props) => {
