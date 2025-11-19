@@ -7,12 +7,14 @@ import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import type { Genre } from "./hooks/useGenres";
 import PlatformFilter from "./components/PlatformFilter";
+import type { platforms } from "./hooks/useGames";
 
 function App() {
   const [appearance, setAppearance] = useState<"light" | "dark">(
     (localStorage.getItem("appearance") as "light" | "dark") || "light"
   );
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);  
+  const [selectedPlatform, setSelectedPlatform] = useState<platforms | null>(null);  
   return (
     <Theme
       accentColor="indigo"
@@ -37,8 +39,8 @@ function App() {
           <GenreList selectedGenre={selectedGenre} onSelectedGenre={(genre) => setSelectedGenre(genre)}/>
         </Box>
         <Flex p={"3"} direction={"column"} align={"start"} gap="3">
-          <PlatformFilter />
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformFilter onSelectPlatform={(platform) => setSelectedPlatform(platform)} selectedPlatform={selectedPlatform} />
+          <GameGrid selectedGenre={selectedGenre} selectedPlatform={selectedPlatform} />
         </Flex>
       </Grid>
     </Theme>

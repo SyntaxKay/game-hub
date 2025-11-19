@@ -1,21 +1,30 @@
 import { Button, DropdownMenu } from "@radix-ui/themes";
+import type { platforms } from "../hooks/useGames";
 import usePlatform from "../hooks/usePlatform";
 
-const PlatformFilter = () => {
+interface Props {
+  onSelectPlatform: (platform: platforms) => void;
+  selectedPlatform?: platforms | null;
+}
+
+const PlatformFilter = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatform();
   if (error) return null;
   return (
-    <DropdownMenu.Root >
+    <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <Button variant="surface" size={"3"} radius="small">
-          Platform
+          {selectedPlatform?.name ? selectedPlatform.name : "Platforms"}
           <DropdownMenu.TriggerIcon />
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content size="2" >
+      <DropdownMenu.Content size="2">
         {data.map((platform) => (
           <>
-            <DropdownMenu.Item key={platform.id}>
+            <DropdownMenu.Item
+              key={platform.id}
+              onClick={() => onSelectPlatform(platform)}
+            >
               {platform.name}
             </DropdownMenu.Item>
             <DropdownMenu.Separator key={platform.id} />
