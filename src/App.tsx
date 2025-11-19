@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, Text, Theme } from "@radix-ui/themes";
+import { Box, Flex, Grid, Theme } from "@radix-ui/themes";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import { ColorModeToggle } from "./components/ColorModeToggle";
@@ -19,7 +19,7 @@ function App() {
       appearance={appearance}
     >
       <Grid
-        columns={{ initial: "1", sm: "300px 1fr" }}
+        columns={{ initial: "1", sm: "250px 1fr" , md: "300px 1fr" }}
         gap="3"
         rows="repeat(2, auto)"
         width="auto"
@@ -30,10 +30,7 @@ function App() {
           <ColorModeToggle onChange={setAppearance} initial={appearance} />
         </Flex>
 
-        <Box
-          display={{ initial: "none", sm: "block" }}
-          p={"3"}
-        >
+        <Box display={{ initial: "none", sm: "block" }} p={"3"}>
           <GenreList />
         </Box>
         <Box p={"3"}>
