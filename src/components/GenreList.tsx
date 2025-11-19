@@ -1,11 +1,14 @@
-import { Avatar, Box, Card, Flex, Text } from "@radix-ui/themes";
+import { Avatar, Box, Card, Flex, Spinner, Text } from "@radix-ui/themes";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
-  const { data } = useGenres();
+  const { data, isLoading, error } = useGenres();
+  if (error) return null;
+
   return (
-   <>
+    <>
+      {isLoading && <Spinner />}
       {data.map((genre) => (
         <Card key={genre.id} mb={"2"} variant="ghost">
           <Flex gap="3" align="center">
