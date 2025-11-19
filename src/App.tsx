@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import { ColorModeToggle } from "./components/ColorModeToggle";
 import { useState } from "react";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   const [appearance, setAppearance] = useState<"light" | "dark">(
@@ -33,7 +34,7 @@ function App() {
           display={{ initial: "none", sm: "block" }}
           p={"3"}
         >
-          <Text>aside</Text>
+          <GenreList />
         </Box>
         <Box p={"3"}>
           <GameGrid />

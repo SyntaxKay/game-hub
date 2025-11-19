@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IconButton } from "@radix-ui/themes";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { BsToggleOff, BsToggleOn } from "react-icons/bs";
+
 
 export function ColorModeToggle({
   onChange,
@@ -27,8 +28,9 @@ export function ColorModeToggle({
       color="indigo"
       onClick={() => setMode((m) => (m === "light" ? "dark" : "light"))}
       title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}
+      size={"4"}
     >
-      {mode === "light" ? <FaSun height={20} width={20} /> : <FaMoon height={20} width={20} />}
+      {mode === "light" ? <BsToggleOff height={20} width={20} /> : <BsToggleOn height={20} width={20} />}
     </IconButton>
   );
 }
