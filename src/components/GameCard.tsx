@@ -26,14 +26,12 @@ const GameCard = ({ game }: GameCardProps) => {
         />
       </Inset>
       {/* <ul>{game.genres.map(g => <li>{g.name}</li>)}</ul> */}
-      <Heading as="h3">
-        {game.name}
-      </Heading>
+      <Heading as="h3">{game.name}</Heading>
       <Flex justify="between" align="center">
         <PlatformIconList
           platforms={game.parent_platforms.map((p) => p.platform)}
         />
-        <Metacritics metacritics={game.metacritic} />
+        {game.metacritic && <Metacritics metacritics={game.metacritic} />}
       </Flex>
     </Card>
   );

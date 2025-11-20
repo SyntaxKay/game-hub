@@ -1,21 +1,41 @@
 import { Button, DropdownMenu } from "@radix-ui/themes";
 
-const SortSelector = () => {
+interface Props {
+  onSelectSortOrder: (order: string) => void;
+  selectedSortOrder: string;
+}
+
+const SORT_ORDERS = [
+  { label: "Relevence", value: "" },
+  { label: "Date Added", value: "-added" },
+  { label: "Name", value: "name" },
+  { label: "Release Date", value: "-released" },
+  { label: "Metacritic", value: "metacritic" },
+  { label: "Average Rating", value: "rating" },
+];
+
+const SortSelector = ({ onSelectSortOrder, selectedSortOrder }: Props) => {
+  const currentSortOrder = SORT_ORDERS.find(
+    (order) => order.value === selectedSortOrder
+  );
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <Button variant="surface" size={"3"} radius="small" color="cyan">
-          Order By: Relevence
+          Order By: { currentSortOrder?.label || "Relevence" }
           <DropdownMenu.TriggerIcon />
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content size="2" color="cyan" variant="soft">
-        <DropdownMenu.Item >Relevence</DropdownMenu.Item>
-        <DropdownMenu.Item>Date Added</DropdownMenu.Item>
-        <DropdownMenu.Item>Name</DropdownMenu.Item>
-        <DropdownMenu.Item>Release Date</DropdownMenu.Item>
-        <DropdownMenu.Item>Popularity</DropdownMenu.Item>
-        <DropdownMenu.Item>Average Rating</DropdownMenu.Item>
+        {SORT_ORDERS.map((order) => (
+          <DropdownMenu.Item
+            key={order.value}
+            textValue={order.value}
+            onClick={() => onSelectSortOrder(order.value)}
+          >
+            {order.label}
+          </DropdownMenu.Item>
+        ))}
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );
