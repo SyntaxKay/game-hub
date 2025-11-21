@@ -1,4 +1,12 @@
-import { Avatar, Box, Button, Card, Flex, Spinner, Text } from "@radix-ui/themes";
+import {
+  Avatar,
+  Box,
+  Card,
+  Flex,
+  Heading,
+  Link,
+  Spinner,
+} from "@radix-ui/themes";
 import useGenres, { type Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import { useMemo } from "react";
@@ -8,15 +16,15 @@ interface Props {
   selectedGenre?: Genre | null;
 }
 
-const GenreList = ({selectedGenre, onSelectedGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   const sortedGenres = useMemo(() => {
     if (!selectedGenre) return data;
-    
+
     return [
-      ...data.filter(genre => genre.id === selectedGenre.id),
-      ...data.filter(genre => genre.id !== selectedGenre.id)
+      ...data.filter((genre) => genre.id === selectedGenre.id),
+      ...data.filter((genre) => genre.id !== selectedGenre.id),
     ];
   }, [data, selectedGenre]);
 
@@ -24,13 +32,10 @@ const GenreList = ({selectedGenre, onSelectedGenre }: Props) => {
 
   return (
     <>
+      <Heading as="h1" size="6" my="4">Genre</Heading>
       {isLoading && <Spinner />}
       {sortedGenres.map((genre) => (
-        <Card
-          key={genre.id}
-          mb={"2"}
-          variant="ghost"
-        >
+        <Card key={genre.id} mb={"2"} variant="ghost">
           <Flex gap="3" align="center">
             <Avatar
               size="5"
@@ -39,9 +44,15 @@ const GenreList = ({selectedGenre, onSelectedGenre }: Props) => {
               fallback="T"
             />
             <Box>
-             <Button radius="small" variant={genre.id === selectedGenre?.id ? 'outline' : 'soft'} size="4" color="iris" onClick={() => onSelectedGenre(genre)}>
+              <Link
+                href="javascript:void(0)"
+                onClick={() => onSelectedGenre(genre)}
+                color="iris"
+                underline={genre.id === selectedGenre?.id ? "always" : "hover"}
+                size={"5"}
+              >
                 {genre.name}
-              </Button>
+              </Link>
             </Box>
           </Flex>
         </Card>
