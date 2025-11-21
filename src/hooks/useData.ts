@@ -13,13 +13,11 @@ const useData = <T>(endpoint: string, requestedConfig?: AxiosRequestConfig, deps
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setLoading] = useState(false)
   useEffect(() => {
-    console.log("useData effect triggered with deps:", deps); // Add this
     const abortCtrl = new AbortController();
     setLoading(true)
     apiClient
       .get<FetchResponse<T>>(endpoint, { signal: abortCtrl.signal, ...requestedConfig })
       .then((res) => {
-        console.log("API response:", res.data); // Add this
         setData(res.data.results);
         setLoading(false)
       })

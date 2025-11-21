@@ -9,7 +9,6 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
-  console.log("Rendering GameCard for game:", game);
   return (
     <Card>
       <Inset clip="padding-box" side="top" pb="current">

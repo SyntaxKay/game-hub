@@ -14,6 +14,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 function App() {
@@ -37,7 +38,11 @@ function App() {
         p={"3"}
       >
         <Flex align={"center"} justify={"between"} gap="3" gridColumn="1 / -1">
-          <NavBar />
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          />
           <ColorModeToggle onChange={setAppearance} initial={appearance} />
         </Flex>
         <Box display={{ initial: "none", sm: "block" }} p={"3"}>
