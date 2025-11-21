@@ -2,7 +2,7 @@ import { Card, Inset, Heading, Flex, Skeleton, Text } from "@radix-ui/themes";
 
 const GameCardSkeleton = () => {
   return (
-    <Card>
+    <Card style={{width: "100%"}}> 
       <Inset clip="padding-box" side="top" pb="current">
         <Skeleton>
           <div

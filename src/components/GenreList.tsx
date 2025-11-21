@@ -32,8 +32,14 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
 
   return (
     <>
-      <Heading as="h1" size="6" my="4">Genre</Heading>
-      {isLoading && <Spinner />}
+      <Heading as="h1" size="6" my="4">
+        Genre
+      </Heading>
+      {isLoading && (
+        <Box as="div" style={{ display: "flex", justifyContent: "center" }}>
+          <Spinner size="3" />
+        </Box>
+      )}
       {sortedGenres.map((genre) => (
         <Card key={genre.id} mb={"2"} variant="ghost">
           <Flex gap="3" align="center">

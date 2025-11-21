@@ -9,7 +9,7 @@ interface Props {
 }
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const { data, error, isLoading } = useGames(gameQuery);
+  const { data, error, isLoading = true } = useGames(gameQuery);
   const skeletons = data?.length || 20;
   return (
     <>
@@ -18,7 +18,7 @@ const GameGrid = ({ gameQuery }: Props) => {
       <Grid
         columns={{ initial: "1", xs: "2", md: "3", lg: "4" }}
         gap="5"
-        width="auto"
+        width="100%"
       >
         {isLoading &&
           Array.from({ length: skeletons }).map((_, index) => (
